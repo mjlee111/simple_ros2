@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "mj_udp.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindowDesign)

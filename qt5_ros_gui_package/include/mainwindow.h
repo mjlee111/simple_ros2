@@ -9,7 +9,6 @@
 #include "QIcon"
 #include "qnode.h"
 #include "ui_mainwindow.h"
-#include "mj_udp.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -26,7 +25,6 @@ public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
   qnode *commNode;
-  udp::UDP udpC;
 
 public slots:
 
