@@ -5,17 +5,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
   ui->setupUi(this);
 
-  initUi();
-}
-
-void MainWindow::initUi()
-{
   QIcon icon("://ros-icon.png");
   this->setWindowIcon(icon);
+
+  qnode = new QNode();
 }
+
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-  //  WriteSettings();
   QMainWindow::closeEvent(event);
 }
 

@@ -24,15 +24,11 @@ class MainWindow : public QMainWindow
 public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
-  qnode *commNode;
-
-public slots:
-
-private:
-  void initUi();
-  void closeEvent(QCloseEvent *event);
+  QNode *qnode;
 
 private:
   Ui::MainWindowDesign *ui;
+  void closeEvent(QCloseEvent *event);
+
 };
 #endif // MAINWINDOW_H

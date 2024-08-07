@@ -7,18 +7,17 @@
 #include <QThread>
 #include <rclcpp/rclcpp.hpp>
 
-class qnode : public QThread
+class QNode : public QThread
 {
     Q_OBJECT
 public:
-    qnode();
-    void run() override;
+    QNode();
+
+protected:
+    void run();
 
 private:
-public slots:
-
-private:
-signals:
+    std::shared_ptr<rclcpp::Node> node;
 };
 
 #endif
