@@ -19,10 +19,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(Boost 1.71.0 REQUIRED COMPONENTS thread)
 find_package(Qt5 COMPONENTS Widgets Core Gui Network REQUIRED)
-find_package(cv_bridge)
-find_package(image_transport)
-find_package(OpenCV REQUIRED)  # Add this line to find OpenCV
-# uncomment the following section in order to fill in
+
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 file(GLOB PRO_SOURCE_DIR RELATIVE ${CMAKE_SOURCE_DIR} FOLLOW_SYMLINKS  src/*.cpp)
@@ -35,7 +32,6 @@ qt5_add_resources(QT_RESOUCE_HPP ${PRO_RESOURCE_DIR})
 include_directories(
 	include/
 	${CMAKE_CURRENT_BINARY_DIR}
-	${OpenCV_INCLUDE_DIRS} 
 )
 add_executable(${PROJECT_NAME}
     ${PRO_SOURCE_DIR}
@@ -44,7 +40,7 @@ add_executable(${PROJECT_NAME}
     ${QT_MOC_HPP}
     ${QT_RESOUCE_HPP}
   )
-ament_target_dependencies(${PROJECT_NAME} rclcpp  Boost cv_bridge image_transport)
+ament_target_dependencies(${PROJECT_NAME} rclcpp  Boost )
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Network ${OpenCV_LIBRARIES})
 install(TARGETS ${PROJECT_NAME} DESTINATION lib/${PROJECT_NAME})
 if(BUILD_TESTING)
