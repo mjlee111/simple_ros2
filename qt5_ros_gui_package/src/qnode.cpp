@@ -2,10 +2,18 @@
 QNode::QNode()
 {
   int argc = 0;
-  char **argv = NULL;
+  char** argv = NULL;
   rclcpp::init(argc, argv);
   node = rclcpp::Node::make_shared("ros2_qt");
   this->start();
+}
+
+QNode::~QNode()
+{
+  if (rclcpp::ok())
+  {
+    rclcpp::shutdown();
+  }
 }
 
 void QNode::run()
@@ -17,4 +25,5 @@ void QNode::run()
     loop_rate.sleep();
   }
   rclcpp::shutdown();
+  Q_EMIT rosShutDown();
 }

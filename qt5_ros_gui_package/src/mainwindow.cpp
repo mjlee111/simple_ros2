@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindowDesign)
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindowDesign)
 {
   ui->setupUi(this);
 
@@ -9,11 +8,16 @@ MainWindow::MainWindow(QWidget *parent)
   this->setWindowIcon(icon);
 
   qnode = new QNode();
+
+  QObject::connect(qnode, SIGNAL(rosShutDown()), this, SLOT(close()));
 }
 
-void MainWindow::closeEvent(QCloseEvent *event)
+void MainWindow::closeEvent(QCloseEvent* event)
 {
   QMainWindow::closeEvent(event);
 }
 
-MainWindow::~MainWindow() { delete ui; }
+MainWindow::~MainWindow()
+{
+  delete ui;
+}

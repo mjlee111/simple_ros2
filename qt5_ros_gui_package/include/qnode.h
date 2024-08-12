@@ -9,15 +9,19 @@
 
 class QNode : public QThread
 {
-    Q_OBJECT
+  Q_OBJECT
 public:
-    QNode();
+  QNode();
+  ~QNode();
 
 protected:
-    void run();
+  void run();
 
 private:
-    std::shared_ptr<rclcpp::Node> node;
+  std::shared_ptr<rclcpp::Node> node;
+
+Q_SIGNALS:
+  void rosShutDown();
 };
 
 #endif
